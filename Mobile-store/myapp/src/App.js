@@ -1,84 +1,25 @@
-import { useState, useEffect } from "react";
-import "./App.css";
 import React from "react";
+import "./App.css";
 import Header from "./components/Header/Header";
-import ProductList from "./components/ProductList/ProductList";
-import ProductDetails from "./components/ProductDetails/ProductDetails";
-import Cart from "./components/Cart/Cart";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import CartPage from "./pages/CartPage/CartPage";
+import HomePage from "./pages/HomePage/HomePage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 const App = () => {
-  const initialProducts = [
-    {
-      id: 1,
-      name: "Samsung Galaxy A10",
-      price: "40.906.000vnđ",
-      img: "images/samsung-galaxy.jpeg",
-      info: {
-        screen: "AMOLED Full HD 9.0",
-        os: "Android 9.0",
-        frontCamera: "20MP",
-        backCamera: "Chính 48MB, phụ 30MP",
-      },
-      ram: "4 GB",
-      rom: "64 GB",
-    },
-    {
-      id: 2,
-      name: "IPhone12",
-      price: "200.306.000vnđ",
-      img: "images/iphone-12.jpeg",
-      info: {
-        screen: "Full HD 12.0",
-        os: "IOS 14",
-        frontCamera: "20MP",
-        backCamera: "Chính 100MB, phụ 30MP",
-      },
-      ram: "16 GB",
-      rom: "32 GB",
-    },
-    {
-      id: 3,
-      name: "Xiaomi Note 10",
-      price: "10.005.000vnđ",
-      img: "images/xiaomi-redmi-note-10-5g.jpeg",
-      info: {
-        screen: "OLED 10.0",
-        os: "Android 8.0",
-        frontCamera: "69MP",
-        backCamera: "Chính 96MB, phụ 30MP",
-      },
-      ram: "10 GB",
-      rom: "64 GB",
-    },
-  ];
-
-  const { products, setProducts } = useState(initialProducts);
-
-  const { cart, setCart } = useState([]); // manage cart
-  const [selectedProduct, setSelectedProduct] = useState(null); // xem chi tiết sản phẩm
-
-  // Get product from server
-  // useEffect(() => {
-  //   setProducts(initialProducts);
-  // }, []);
-
-  const onViewProductDetail = (id) => {
-    const product = initialProducts.find((product) => product.id === id);
-    setSelectedProduct(product);
-  };
-
   return (
-    <div className="container">
-      <Header />
-      <Cart />
-      <ProductList
-        products={initialProducts}
-        onViewProductDetail={onViewProductDetail}
-      />
-      <ProductDetails selectedProduct={selectedProduct} />
-    </div>
+    <Router>
+      <div className="container">
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
-  
 };
 
 export default App;
