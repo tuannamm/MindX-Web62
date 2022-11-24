@@ -3,14 +3,7 @@
 
 import { useReducer } from "react";
 import CartContext from "./CartContext";
-
-const reducer = (state, action) => {
-  const { type, payload } = action;
-  switch (type) {
-    default:
-      return state;
-  }
-};
+import reducer from "./CartReducer";
 
 const CartState = (props) => {
   const initialState = {

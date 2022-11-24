@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import CartContext from "../../context/Cart/CartContext";
 
 const Header = () => {
+  const cartCtx = useContext(CartContext);
+  const cart = cartCtx?.state?.cart;
+  const numCart = cart.length;
   return (
     <div className="mb-3">
       <nav className="navbar navbar-expand-lg navbar-light bg-light px-3">
@@ -35,7 +39,7 @@ const Header = () => {
             </ul>
             <div className="cart">
               <Link className="nav-link" to="/cart">
-                <span>Cart (0)</span>
+                <span>Cart ({numCart})</span>
               </Link>
             </div>
           </div>

@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import React from "react";
 import ProductList from "../../components/ProductList/ProductList";
 import ProductDetails from "../../components/ProductDetails/ProductDetails";
-
+import Search from "../../components/Search/Search";
 const HomePage = () => {
   const initialProducts = [
     {
       id: 1,
       name: "Samsung Galaxy A10",
-      price: "40.906.000vnđ",
+      price: "40906000",
       img: "images/samsung-galaxy.jpeg",
       info: {
         screen: "AMOLED Full HD 9.0",
@@ -22,7 +22,7 @@ const HomePage = () => {
     {
       id: 2,
       name: "IPhone12",
-      price: "200.306.000vnđ",
+      price: "200306000",
       img: "images/iphone-12.jpeg",
       info: {
         screen: "Full HD 12.0",
@@ -36,7 +36,7 @@ const HomePage = () => {
     {
       id: 3,
       name: "Xiaomi Note 10",
-      price: "10.005.000vnđ",
+      price: "10005000",
       img: "images/xiaomi-redmi-note-10-5g.jpeg",
       info: {
         screen: "OLED 10.0",
@@ -66,6 +66,7 @@ const HomePage = () => {
 
   return (
     <div className="container">
+      <Search />
       <ProductList
         products={initialProducts}
         onViewProductDetail={onViewProductDetail}

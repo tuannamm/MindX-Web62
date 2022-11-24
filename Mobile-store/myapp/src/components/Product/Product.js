@@ -1,9 +1,23 @@
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import CartContext from "../../context/Cart/CartContext";
 
 const Products = (props) => {
-  const { name, id, img, price, onViewProductDetail } = props;
+  const cartCtx = useContext(CartContext);
+  const { dispatch } = cartCtx;
 
+  const { product, onViewProductDetail } = props;
+  const { name, id, img, price } = product;
+
+  const onAddToCart = (product) => {
+    const action = {
+      type: "ADD_TO_CART",
+      payload: product,
+    };
+
+    dispatch(action);
+  };
   return (
     <>
       <Card id={id} style={{ width: "18rem" }}>
@@ -18,7 +32,11 @@ const Products = (props) => {
             <span>{price}</span>
           </div>
           <div className="d-flex align-items-center justify-content-between">
-            <Button variant="primary" className="btn btn-danger">
+            <Button
+              variant="primary"
+              className="btn btn-danger"
+              onClick={() => onAddToCart(product)}
+            >
               Add to cart
             </Button>
             <Button

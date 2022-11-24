@@ -9,14 +9,14 @@ const ProductList = (props) => {
       style={{ gap: "8px" }}
     >
       {products &&
-        products.map((product) => {
+        products.map((productItem, index) => {
+          const { name, id } = productItem;
+          const key = `${index}-${name}-${id}`;
           return (
             <Product
               onViewProductDetail={onViewProductDetail}
-              id={product.id}
-              name={product.name}
-              img={product.img}
-              price={product.price}
+              product={productItem}
+              key={key}
             />
           );
         })}

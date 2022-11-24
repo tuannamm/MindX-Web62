@@ -2,8 +2,6 @@ import React from "react";
 
 const ProductDetails = (props) => {
   const { selectedProduct } = props;
-  console.log(selectedProduct);
-
   return (
     <>
       {selectedProduct && (
