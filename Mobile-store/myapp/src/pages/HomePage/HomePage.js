@@ -49,15 +49,14 @@ const HomePage = () => {
     },
   ];
 
-  const { products, setProducts } = useState(initialProducts);
+  const [products, setProducts] = useState(initialProducts);
 
   const { cart, setCart } = useState([]); // manage cart
   const [selectedProduct, setSelectedProduct] = useState(null); // xem chi tiết sản phẩm
 
-  // Get product from server
-  // useEffect(() => {
-  //   setProducts(initialProducts);
-  // }, []);
+  useEffect(() => {
+    setProducts(initialProducts);
+  }, []);
 
   const onViewProductDetail = (id) => {
     const product = initialProducts.find((product) => product.id === id);
@@ -68,7 +67,7 @@ const HomePage = () => {
     <div className="container">
       <Search />
       <ProductList
-        products={initialProducts}
+        products={products}
         onViewProductDetail={onViewProductDetail}
       />
       <ProductDetails selectedProduct={selectedProduct} />
