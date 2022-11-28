@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import CartContext from "../../context/Cart/CartContext";
 import "./CartPage.scss";
+import Total from "../../components/Total/Total";
 
 const Cart = () => {
   const { state, dispatch } = useContext(CartContext);
@@ -88,6 +89,7 @@ const Cart = () => {
           <tbody>{cartBody}</tbody>
         </table>
       </div>
+      <Total />
     </div>
   );
 };

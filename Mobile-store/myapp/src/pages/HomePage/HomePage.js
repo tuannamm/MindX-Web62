@@ -51,7 +51,7 @@ const HomePage = () => {
 
   const [products, setProducts] = useState(initialProducts);
 
-  const { cart, setCart } = useState([]); // manage cart
+  const [cart, setCart] = useState([]); // manage cart
   const [selectedProduct, setSelectedProduct] = useState(null); // xem chi tiết sản phẩm
 
   useEffect(() => {
